@@ -4,9 +4,13 @@ import {routerPaths} from "../../configs/routers";
 import React from 'react';
 import 'antd/dist/antd.css';
 import axios from "axios";
+import {urls} from "../../configs/urls";
+
+
+
 const {Title} = Typography;
 
-export class LoginForm extends React.Component {
+ export class LoginForm extends React.Component {
     state = {
         userName: '',
         passWord: ''
@@ -14,12 +18,11 @@ export class LoginForm extends React.Component {
 
 
     onFill = () => {
-        const url = 'http://localhost:3000/user/login'
-        axios.post(url,this.state).then(response=>{
-            console.log(url)
-            console.log(response.data)
+
+
+        axios.post(urls.userLoginUrl, this.state).then(response => {
             const {data} = response
-            this.props.history.push(routerPaths.userCenter,{data})
+            this.props.history.push(routerPaths.userMenu, {userName:this.state.userName})
         })
 
     };
@@ -39,7 +42,7 @@ export class LoginForm extends React.Component {
             <>
 
                 <Row>
-                    <Col span={24} justify="center" style={{marginTop: '300px'}}>
+                    <Col span={24} justify="center">
                         <Row justify="center">
                             <Col span={6} style={{border: '1px solid black', padding: '15px'}}>
                                 <Title>停车场系统-用户登录</Title>
@@ -63,7 +66,7 @@ export class LoginForm extends React.Component {
                                         <Input
                                             prefix={<LockOutlined className="site-form-item-icon"/>}
                                             type="password"
-                                            placeholder="请输入密码" onChange = {this.onPassWordChange}
+                                            placeholder="请输入密码" onChange={this.onPassWordChange}
                                         />
                                     </Form.Item>
                                     <Form.Item>

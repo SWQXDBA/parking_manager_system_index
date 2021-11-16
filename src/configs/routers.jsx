@@ -1,18 +1,19 @@
+
+import {UserMenu} from "../components/UserMenu";
 import {LoginForm} from "../components/LoginForm";
-import {UserCenter} from "../components/UserCenter";
 export const routerPaths = {
-    userLogin: '/login',
-    userCenter:'/userCenter'
+    userLogin: '/userLogin',
+    userMenu:'/userMenu'
 }
 
 export  const routers = [
     {
         path:routerPaths.userLogin,
-        element:<LoginForm/>
+        component:LoginForm
     },
     {
-        path:routerPaths.userCenter,
-        element:<UserCenter/>
+        path:routerPaths.userMenu,
+        component:UserMenu
     }
 ]
 

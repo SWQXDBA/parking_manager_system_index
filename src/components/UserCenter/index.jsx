@@ -1,11 +1,13 @@
 import React, {Component} from 'react';
+import {Header} from "antd/es/layout/layout";
+import Title from "antd/es/typography/Title";
 
 export class UserCenter extends Component {
     render() {
-        const {data} = this.props
+        console.log(this.props)
         return (
             <div>
-                用户中心 {data}
+                <Title>尊敬的{this.props.userName}业主您好</Title>
             </div>
         );
     }
