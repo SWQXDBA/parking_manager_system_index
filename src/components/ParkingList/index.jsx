@@ -63,7 +63,7 @@ export class ParkingList extends Component {
                     key: item.id + '',
                     parkZone: item.zone,
                     indexInZone: item.idInZone,
-                    parkState: item.leaseholder == null  ? '已出租' : '未出租',
+                    parkState: item.leaseholder == null  ? '未出租' : '已出租',
                     leaseholder:item.leaseholder?.userName==null?'':item.leaseholder.userName,
                     startLeaseTime:item.startLeaseTime==null?'':item.startLeaseTime,
                     expirationTime:item.expirationTime==null?'':item.expirationTime
