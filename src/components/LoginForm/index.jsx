@@ -1,6 +1,6 @@
 import {Button, Checkbox, Col, Form, Input, Row, Typography} from 'antd';
 import {LockOutlined, UserOutlined} from '@ant-design/icons';
-
+import {routerPaths} from "../../configs/routers";
 import React from 'react';
 import 'antd/dist/antd.css';
 import axios from "axios";
@@ -14,14 +14,16 @@ export class LoginForm extends React.Component {
 
 
     onFill = () => {
-        axios.post('http://localhost:8080',this.state).then(response=>{
+        const url = 'http://localhost:3000/user/login'
+        axios.post(url,this.state).then(response=>{
+            console.log(url)
             console.log(response.data)
+            const {data} = response
+            this.props.history.push(routerPaths.userCenter,{data})
         })
 
     };
-    onFinish = (values: any) => {
-        console.log('Success:', values);
-    };
+
     onUserNameChange = (event) => {
         const userName = event.target.value;
         this.setState({userName})
@@ -30,9 +32,7 @@ export class LoginForm extends React.Component {
         const passWord = event.target.value;
         this.setState({passWord})
     }
-    onFinishFailed = (errorInfo: any) => {
-        console.log('Failed:', errorInfo);
-    };
+
 
     render() {
         return (
@@ -47,8 +47,7 @@ export class LoginForm extends React.Component {
                                     name="normal_login"
                                     className="login-form"
                                     initialValues={{remember: true}}
-                                    onFinish={this.onFinish}
-                                    onFinishFailed={this.onFinishFailed}
+
                                 >
                                     <Form.Item
                                         name="username"
