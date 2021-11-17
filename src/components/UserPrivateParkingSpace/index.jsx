@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
-import {Button, Table} from "antd";
 import axios from "axios";
 import {urls} from "../../configs/urls";
+import {Table} from "antd";
 
-export class ParkingList extends Component {
+export class UserPrivateParkingSpace extends Component {
     state = {
         data: [],
         pagination: {
@@ -18,8 +18,7 @@ export class ParkingList extends Component {
             {
                 key: '1',
                 parkZone: 'A',
-                indexInZone: 1,
-                parkState: '已出租',
+                indexInZone: 1
             }
         ];
 
@@ -33,15 +32,6 @@ export class ParkingList extends Component {
             title: '区内编号',
             dataIndex: 'indexInZone',
             key: 'indexInZone',
-        },
-        {
-            title: '车位情况',
-            dataIndex: 'parkState',
-            key: 'parkState',
-        }, {
-            title: '承租人',
-            dataIndex: 'leaseholder',
-            key: 'leaseholder',
         }, {
             title: '起租时间',
             dataIndex: 'startLeaseTime',
@@ -52,34 +42,19 @@ export class ParkingList extends Component {
             dataIndex: 'expirationTime',
             key: 'expirationTime',
         },
-        {
-            title: '操作',
-            key: 'action',
-            dataIndex: 'action',
-            render: (text,record,index) => {
-                return <Button type = "primary" disabled  = {record.parkState==='已出租'}> 申请租用</Button>;
-            }
-
-
-
-        },
-
-    ]
-
+    ];
     fetch = () => {
         this.setState({
             loading: true
         })
-        axios.post(urls.getAllParksUrl).then(response => {
+        axios.post(urls.getPrivateParkingSpaceUrl).then(response => {
             const datas = response.data.map(item => {
                 return {
                     key: item.id + '',
                     parkZone: item.zone,
                     indexInZone: item.idInZone,
-                    parkState: item.leaseholder == null ? '未出租' : '已出租',
-                    leaseholder: item.leaseholder?.userName == null ? '' : item.leaseholder.userName,
-                    startLeaseTime: item.startLeaseTime == null ? '' : item.startLeaseTime,
-                    expirationTime: item.expirationTime == null ? '' : item.expirationTime
+                    startLeaseTime:item.startLeaseTime==null?'':item.startLeaseTime,
+                    expirationTime:item.expirationTime==null?'':item.expirationTime
                 }
             })
             this.setState({
@@ -91,7 +66,7 @@ export class ParkingList extends Component {
 
     componentDidMount() {
         this.state.data = this.dataSource
-        //this.fetch();
+       // this.fetch();
     }
 
     handleTableChange = (pagination, filters, sorter) => {//每次换页重新加载全部数据很蠢 懒得在后端分页了
@@ -115,4 +90,4 @@ export class ParkingList extends Component {
     }
 }
 
-export default ParkingList;
+export default UserPrivateParkingSpace;

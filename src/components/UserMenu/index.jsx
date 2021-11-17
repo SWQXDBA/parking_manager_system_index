@@ -7,6 +7,7 @@ import {UserCenter} from "../UserCenter";
 
 import Title from "antd/es/typography/Title";
 import {ParkingList} from "../ParkingList";
+import {UserPrivateParkingSpace} from "../UserPrivateParkingSpace";
 const {SubMenu} = Menu
 
 export class UserMenu extends Component {
@@ -38,7 +39,7 @@ export class UserMenu extends Component {
             })
         }else if(target.key==='3'){
             this.setState({
-                routerComponent:<></>
+                routerComponent:<UserPrivateParkingSpace/>
             })
         }
     }
@@ -47,10 +48,10 @@ export class UserMenu extends Component {
       //  console.log(this.state.routerComponent)
    //     console.log(this.props.location.state)
         return (
-            <div>
-                <Row justify="center">
-                    <Col style={{height: '100px'}}>
-                        <Title  style={{marginTop: '100px'}}> 停车场系统用户中心</Title>
+            <>
+                <Row justify="center" align="middle" style={{height: '60px'}}>
+                    <Col>
+                        <Title  style={{marginTop: '15px'}}> 停车场系统用户中心</Title>
                     </Col>
                 </Row>
                 <Row justify="start" style={{marginTop: '100px', height: '500px'}}>
@@ -76,7 +77,7 @@ export class UserMenu extends Component {
                 </Row>
 
 
-            </div>
+            </>
         );
     }
 }

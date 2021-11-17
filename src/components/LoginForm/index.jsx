@@ -41,9 +41,8 @@ const {Title} = Typography;
         return (
             <>
 
-                <Row>
-                    <Col span={24} justify="center">
-                        <Row justify="center">
+
+                        <Row justify="center" align = "middle" style = {{height:'600px'}}>
                             <Col span={6} style={{border: '1px solid black', padding: '15px'}}>
                                 <Title>停车场系统-用户登录</Title>
                                 <Form
@@ -90,8 +89,7 @@ const {Title} = Typography;
                                 </Form>
                             </Col>
                         </Row>
-                    </Col>
-                </Row>
+
 
 
             </>
