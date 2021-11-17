@@ -8,6 +8,7 @@ import {UserCenter} from "../UserCenter";
 import Title from "antd/es/typography/Title";
 import {ParkingList} from "../ParkingList";
 import {UserPrivateParkingSpace} from "../UserPrivateParkingSpace";
+import {ApplyRent} from "../ApplyRent";
 const {SubMenu} = Menu
 
 export class UserMenu extends Component {
@@ -35,13 +36,18 @@ export class UserMenu extends Component {
             })
         }else if(target.key==='2'){
             this.setState({
-                routerComponent:<ParkingList />
+                routerComponent:<ParkingList applyRent = {this.applyRent}/>
             })
         }else if(target.key==='3'){
             this.setState({
                 routerComponent:<UserPrivateParkingSpace/>
             })
         }
+    }
+    applyRent  = ()=>{
+        this.setState({
+            routerComponent:<ApplyRent/>
+        })
     }
     render() {
 

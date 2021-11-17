@@ -48,7 +48,9 @@ export class UserPrivateParkingSpace extends Component {
             loading: true
         })
         axios.post(urls.getPrivateParkingSpaceUrl).then(response => {
-            const datas = response.data.map(item => {
+            console.log('response')
+            console.log(response.data)
+            const datas = response.data.data.map(item => {
                 return {
                     key: item.id + '',
                     parkZone: item.zone,
@@ -65,8 +67,8 @@ export class UserPrivateParkingSpace extends Component {
     }
 
     componentDidMount() {
-        this.state.data = this.dataSource
-       // this.fetch();
+      //  this.state.data = this.dataSource
+        this.fetch();
     }
 
     handleTableChange = (pagination, filters, sorter) => {//每次换页重新加载全部数据很蠢 懒得在后端分页了

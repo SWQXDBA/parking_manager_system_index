@@ -57,7 +57,7 @@ export class ParkingList extends Component {
             key: 'action',
             dataIndex: 'action',
             render: (text,record,index) => {
-                return <Button type = "primary" disabled  = {record.parkState==='已出租'}> 申请租用</Button>;
+                return <Button onClick = {this.props.applyRent} type = "primary" disabled  = {record.parkState==='已出租'}> 申请租用</Button>;
             }
 
 
@@ -65,6 +65,8 @@ export class ParkingList extends Component {
         },
 
     ]
+
+
 
     fetch = () => {
         this.setState({
@@ -90,12 +92,12 @@ export class ParkingList extends Component {
     }
 
     componentDidMount() {
-        this.state.data = this.dataSource
-        //this.fetch();
+      //  this.state.data = this.dataSource
+        this.fetch();
     }
 
     handleTableChange = (pagination, filters, sorter) => {//每次换页重新加载全部数据很蠢 懒得在后端分页了
-        this.fetch();
+       // this.fetch();
     };
 
 
