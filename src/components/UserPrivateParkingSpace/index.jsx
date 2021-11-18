@@ -14,13 +14,13 @@ export class UserPrivateParkingSpace extends Component {
         loading: false,
     };
 
-         dataSource = [
-            {
-                key: '1',
-                parkZone: 'A',
-                indexInZone: 1
-            }
-        ];
+    dataSource = [
+        {
+            key: '1',
+            parkZone: 'A',
+            indexInZone: 1
+        }
+    ];
 
     columns = [
         {
@@ -48,26 +48,33 @@ export class UserPrivateParkingSpace extends Component {
             loading: true
         })
         axios.post(urls.getPrivateParkingSpaceUrl).then(response => {
-            console.log('response')
-            console.log(response.data)
-            const datas = response.data.data.map(item => {
-                return {
-                    key: item.id + '',
-                    parkZone: item.zone,
-                    indexInZone: item.idInZone,
-                    startLeaseTime:item.startLeaseTime==null?'':item.startLeaseTime,
-                    expirationTime:item.expirationTime==null?'':item.expirationTime
-                }
-            })
-            this.setState({
-                data: datas,
-                loading: false
-            })
+
+            if (response.data.code !== 200) {
+                alert(response.data.msg)
+                this.setState({
+                    loading: false
+                })
+            } else {
+                const datas = response.data.data.map(item => {
+                    return {
+                        key: item.id + '',
+                        parkZone: item.zone,
+                        indexInZone: item.idInZone,
+                        startLeaseTime: item.startLeaseTime == null ? '' : item.startLeaseTime,
+                        expirationTime: item.expirationTime == null ? '' : item.expirationTime
+                    }
+                })
+                this.setState({
+                    data: datas,
+                    loading: false
+                })
+            }
+
         })
     }
 
     componentDidMount() {
-      //  this.state.data = this.dataSource
+        //  this.state.data = this.dataSource
         this.fetch();
     }
 

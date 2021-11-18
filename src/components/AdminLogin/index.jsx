@@ -13,17 +13,17 @@ const {Title} = Typography;
 export class AdminLogin extends React.Component {
     state = {
         userName: '',
-        passWord: ''
+        password: ''
     }
 
 
     onFill = () => {
 
 
-        axios.post(urls.userLoginUrl, this.state).then(response => {
+        axios.post(urls.adminLoginUrl, this.state).then(response => {
             const {data} = response
             if(data.code ===200){
-                this.props.history.push(routerPaths.userMenu, {userName:this.state.userName})
+                this.props.history.push(routerPaths.adminMenu, {userName:this.state.userName})
             }else{
                 alert(data.msg)
             }
@@ -37,8 +37,8 @@ export class AdminLogin extends React.Component {
         this.setState({userName})
     }
     onPassWordChange = (event) => {
-        const passWord = event.target.value;
-        this.setState({passWord})
+        const password = event.target.value;
+        this.setState({password})
     }
 
 
@@ -48,7 +48,7 @@ export class AdminLogin extends React.Component {
 
             <Row justify="center" align = "middle" style = {{height:'600px'}}>
                 <Col span={6} style={{border: '1px solid black', padding: '15px'}}>
-                                <Title>停车场系统-用户登录</Title>
+                                <Title>停车场系统-管理员登录</Title>
                                 <Form
                                     name="normal_login"
                                     className="login-form"

@@ -9,15 +9,16 @@ import Title from "antd/es/typography/Title";
 import {ParkingList} from "../ParkingList";
 import {UserPrivateParkingSpace} from "../UserPrivateParkingSpace";
 import {RentApply} from "../RentApply";
+import {RentApplyList} from "../RentApplyList";
 const {SubMenu} = Menu
 
-export class UserMenu extends Component {
+export class AdminMenu extends Component {
 
 
     state = {
         collapsed: false,
         routerComponent:<Title>
-            欢迎来到停车场用户系统
+            停车场管理系统——管理员后台
         </Title>
     };
     toggleCollapsed = () => {
@@ -28,13 +29,13 @@ export class UserMenu extends Component {
 
     showChange = (target)=>{
 
-       // console.log(this.props.location.state)
+        // console.log(this.props.location.state)
         if(target.key==='1'){
 
             this.setState({
-                routerComponent:<UserCenter userName={this.props.location.state.userName}/>
+                routerComponent:<RentApplyList/>
             })
-        }else if(target.key==='2'){
+        }/*else if(target.key==='2'){
             this.setState({
                 routerComponent:<ParkingList applyRent = {this.applyRent}/>
             })
@@ -42,22 +43,20 @@ export class UserMenu extends Component {
             this.setState({
                 routerComponent:<UserPrivateParkingSpace/>
             })
-        }
+        }*/
     }
-    applyRent  = (zone,idInZone)=>{
-        this.setState({
-            routerComponent:<RentApply zone={zone} idInZone = {idInZone}/>
-        })
-    }
+
+
+
     render() {
 
-      //  console.log(this.state.routerComponent)
-   //     console.log(this.props.location.state)
+        //  console.log(this.state.routerComponent)
+        //     console.log(this.props.location.state)
         return (
             <>
                 <Row justify="center" align="middle" style={{height: '60px'}}>
                     <Col>
-                        <Title  style={{marginTop: '15px'}}> 停车场系统用户中心</Title>
+                        <Title  style={{marginTop: '15px'}}> 停车场系统管理员操作中心</Title>
                     </Col>
                 </Row>
                 <Row justify="start" style={{marginTop: '100px', height: '500px'}}>
@@ -71,9 +70,9 @@ export class UserMenu extends Component {
                               theme="dark"
                               inlineCollapsed={this.state.collapsed}>
 
-                            <Menu.Item onClick={this.showChange} key="1" icon={<DesktopOutlined/>}>个人中心</Menu.Item>
-                            <Menu.Item onClick={this.showChange} key="2" icon={<DesktopOutlined/>}>车位情况</Menu.Item>
-                            <Menu.Item onClick={this.showChange} key="3" icon={<DesktopOutlined/>}>我的车位</Menu.Item>
+                            <Menu.Item onClick={this.showChange} key="1" icon={<DesktopOutlined/>}>申请批准</Menu.Item>
+                           {/* <Menu.Item onClick={this.showChange} key="2" icon={<DesktopOutlined/>}>车位情况</Menu.Item>
+                            <Menu.Item onClick={this.showChange} key="3" icon={<DesktopOutlined/>}>我的车位</Menu.Item>*/}
 
                         </Menu>
                     </Col>

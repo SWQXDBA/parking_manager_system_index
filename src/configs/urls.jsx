@@ -3,5 +3,7 @@ export const urls = {
     getAllParksUrl:'http://localhost:3000/parkingSpace/getAll',
     getPrivateParkingSpaceUrl:'http://localhost:3000/parkingSpace/getByUser',
     rentApply:'http://localhost:3000/user/rent',
-    adminLoginUrl:'http://localhost:3000/admin/login'
+    adminLoginUrl:'http://localhost:3000/admin/login',
+    adminGetAllRentApplyUrl:'http://localhost:3000/admin/getAllRentApply',
+    adminRefuseApplyUrl:'http://localhost:3000/admin/refuse'
 }

@@ -3,8 +3,9 @@ import {Button, Col, DatePicker, Form, Row} from "antd";
 import moment from "moment";
 import axios from "axios";
 import {urls} from "../../configs/urls";
+import Title from "antd/es/typography/Title";
 
-export class ApplyRent extends Component {
+export class RentApply extends Component {
     state = {
         startRentTime:null,
         endRentTime:null
@@ -65,7 +66,7 @@ export class ApplyRent extends Component {
         return (
             <>
                 <Row>
-                    您要申请租用的车位是{zone}区{idInZone}号车位
+                    <Title> 您要申请租用的车位是{zone}区{idInZone}号车位</Title>
                 </Row>
                 <Row>
                     <Col offset = {4} span = {12}>
@@ -113,4 +114,4 @@ export class ApplyRent extends Component {
     }
 }
 
-export default ApplyRent;
+export default RentApply;
