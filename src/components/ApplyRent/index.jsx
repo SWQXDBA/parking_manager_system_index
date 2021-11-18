@@ -43,7 +43,7 @@ export class ApplyRent extends Component {
            }
 
            axios.post(urls.rentApply,data).then(response=>{
-
+               alert(response.data.msg)
            })
         }
     }

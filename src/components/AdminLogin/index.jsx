@@ -10,7 +10,7 @@ import {urls} from "../../configs/urls";
 
 const {Title} = Typography;
 
- export class LoginForm extends React.Component {
+export class AdminLogin extends React.Component {
     state = {
         userName: '',
         passWord: ''
@@ -22,7 +22,12 @@ const {Title} = Typography;
 
         axios.post(urls.userLoginUrl, this.state).then(response => {
             const {data} = response
-            this.props.history.push(routerPaths.userMenu, {userName:this.state.userName})
+            if(data.code ===200){
+                this.props.history.push(routerPaths.userMenu, {userName:this.state.userName})
+            }else{
+                alert(data.msg)
+            }
+
         })
 
     };
@@ -41,9 +46,8 @@ const {Title} = Typography;
         return (
             <>
 
-
-                        <Row justify="center" align = "middle" style = {{height:'600px'}}>
-                            <Col span={6} style={{border: '1px solid black', padding: '15px'}}>
+            <Row justify="center" align = "middle" style = {{height:'600px'}}>
+                <Col span={6} style={{border: '1px solid black', padding: '15px'}}>
                                 <Title>停车场系统-用户登录</Title>
                                 <Form
                                     name="normal_login"
@@ -56,7 +60,7 @@ const {Title} = Typography;
                                         rules={[{required: true, message: 'Please input your Username!'}]}
                                     >
                                         <Input prefix={<UserOutlined className="site-form-item-icon"/>}
-                                               placeholder="请输入用户名" onChange={this.onUserNameChange}/>
+                                               placeholder="请输入管理员用户名" onChange={this.onUserNameChange}/>
                                     </Form.Item>
                                     <Form.Item
                                         name="password"
@@ -65,7 +69,7 @@ const {Title} = Typography;
                                         <Input
                                             prefix={<LockOutlined className="site-form-item-icon"/>}
                                             type="password"
-                                            placeholder="请输入密码" onChange={this.onPassWordChange}
+                                            placeholder="请输入管理员密码" onChange={this.onPassWordChange}
                                         />
                                     </Form.Item>
                                     <Form.Item>
@@ -73,9 +77,6 @@ const {Title} = Typography;
                                             <Checkbox>记住密码</Checkbox>
                                         </Form.Item>
 
-                                        <a className="login-form-forgot" href="">
-                                            忘记密码？点击找回
-                                        </a>
                                     </Form.Item>
 
 
@@ -84,13 +85,10 @@ const {Title} = Typography;
                                                 onClick={this.onFill}>
                                             登录
                                         </Button>
-                                        &nbsp; 或者 &nbsp;  <a href="">注册新账户</a>
                                     </Form.Item>
                                 </Form>
                             </Col>
                         </Row>
-
-
 
             </>
 

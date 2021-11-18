@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Button, Col, Menu, Row} from 'antd';
 import 'antd/dist/antd.css';
 import {DesktopOutlined, MenuFoldOutlined, MenuUnfoldOutlined} from "@ant-design/icons";
-import {LoginForm} from "../LoginForm";
+import {UserLogin} from "../UserLogin";
 import {UserCenter} from "../UserCenter";
 
 import Title from "antd/es/typography/Title";

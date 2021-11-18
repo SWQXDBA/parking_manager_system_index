@@ -1,19 +1,25 @@
 
 import {UserMenu} from "../components/UserMenu";
-import {LoginForm} from "../components/LoginForm";
+import {UserLogin} from "../components/UserLogin";
+import {AdminLogin} from "../components/AdminLogin";
 export const routerPaths = {
     userLogin: '/userLogin',
-    userMenu:'/userMenu'
+    userMenu:'/userMenu',
+    adminLogin:'/adminLogin'
 }
 
 export  const routers = [
     {
         path:routerPaths.userLogin,
-        component:LoginForm
+        component:UserLogin
     },
     {
         path:routerPaths.userMenu,
         component:UserMenu
+    },
+    {
+        path:routerPaths.adminLogin,
+        component:AdminLogin
     }
 ]
 
