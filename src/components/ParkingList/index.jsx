@@ -57,7 +57,9 @@ export class ParkingList extends Component {
             key: 'action',
             dataIndex: 'action',
             render: (text,record,index) => {
-                return <Button onClick = {this.props.applyRent} type = "primary" disabled  = {record.parkState==='已出租'}> 申请租用</Button>;
+   /*             console.log('record')
+                console.log(record)*/
+                return <Button onClick = {()=>this.props.applyRent(record.parkZone,record.indexInZone)} type = "primary" disabled  = {record.parkState==='已出租'}> 申请租用</Button>;
             }
 
 

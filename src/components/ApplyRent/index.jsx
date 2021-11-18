@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Button, Col, DatePicker, Form, Row} from "antd";
 import moment from "moment";
 import axios from "axios";
+import {urls} from "../../configs/urls";
 
 export class ApplyRent extends Component {
     state = {
@@ -31,8 +32,19 @@ export class ApplyRent extends Component {
         if(this.state.startRentTime==null||this.state.endRentTime==null){
             alert('数据不能为空!')
         }else{
+            const {zone,idInZone} = this.props
+            const {startRentTime,endRentTime} = this.state
 
-         //   axios.post
+           const data = {
+               zone:zone,
+               idInZone:idInZone,
+               startLeaseTime:startRentTime.valueOf(),
+               expirationTime:endRentTime.valueOf()
+           }
+
+           axios.post(urls.rentApply,data).then(response=>{
+      
+           })
         }
     }
     onChange = (str,value)=>{

@@ -44,9 +44,9 @@ export class UserMenu extends Component {
             })
         }
     }
-    applyRent  = ()=>{
+    applyRent  = (zone,idInZone)=>{
         this.setState({
-            routerComponent:<ApplyRent/>
+            routerComponent:<ApplyRent zone={zone} idInZone = {idInZone}/>
         })
     }
     render() {
