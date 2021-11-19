@@ -1,10 +1,15 @@
 import React, {Component} from 'react';
-import {Button, Table} from "antd";
+import {Button, Row,Col, Input, Select, Space, Table} from "antd";
+
 import axios from "axios";
 import {urls} from "../../configs/urls";
+import {Option} from "antd/es/mentions";
+
+const { Search } = Input;
 
 export class ParkingList extends Component {
     state = {
+        selectZone : 'A',
         data: [],
         pagination: {
             defaultCurrent: 1,
@@ -13,7 +18,14 @@ export class ParkingList extends Component {
         },
         loading: false,
     };
-
+   selectZoneBefore = (
+        <Select placeholder="区域编号" defaultValue="A" className="select-before"
+                onChange={this.onSelectChange}>
+            <Option value="B">B</Option>
+            <Option value="C">C</Option>
+            <Option value="D">D</Option>
+        </Select>
+    );
          dataSource = [
             {
                 key: '1',
@@ -28,6 +40,29 @@ export class ParkingList extends Component {
             title: '车位区域',
             dataIndex: 'parkZone',
             key: 'parkZone',
+            filters: [
+                {
+                    text: 'A',
+                    value: 'A',
+                },
+                {
+                    text: 'B',
+                    value: 'B',
+                },
+                {
+                    text: 'C',
+                    value: 'C',
+                },
+                {
+                    text: 'D',
+                    value: 'D',
+                }
+            ],
+            // specify the condition of filtering result
+            // here is that finding the name started with `value`
+            onFilter: (value, record) => record.parkZone===value,
+            sorter: (record1, record2) => record1.idInZone - record2.idInZone,
+            sortDirections: ['descend']
         },
         {
             title: '区内编号',
@@ -67,7 +102,24 @@ export class ParkingList extends Component {
         },
 
     ]
+    onSelectChange = (value)=>{
+        this.state.selectZone = value;
+    }
+    onSearch = (value)=>{
+        this.setState({
+            data:this.old
+        })
+         this.old =  this.state.data.map(o=>o)
 
+       const arr =this.state.data.filter((current,index)=>{
+            return current.parkZone == this.state.selectZone&&current.indexInZone == value
+        })
+        this.setState({
+            data:arr
+        })
+
+
+    }
 
 
     fetch = () => {
@@ -75,21 +127,26 @@ export class ParkingList extends Component {
             loading: true
         })
         axios.post(urls.getAllParksUrl).then(response => {
-            const datas = response.data.map(item => {
-                return {
-                    key: item.id + '',
-                    parkZone: item.zone,
-                    indexInZone: item.idInZone,
-                    parkState: item.leaseholder == null ? '未出租' : '已出租',
-                    leaseholder: item.leaseholder?.userName == null ? '' : item.leaseholder.userName,
-                    startLeaseTime: item.startLeaseTime == null ? '' : item.startLeaseTime,
-                    expirationTime: item.expirationTime == null ? '' : item.expirationTime
-                }
-            })
-            this.setState({
-                data: datas,
-                loading: false
-            })
+            if(response.data!=null){
+                const datas = response.data.map(item => {
+                    return {
+                        key: item.id + '',
+                        parkZone: item.zone,
+                        indexInZone: item.idInZone,
+                        parkState: item.leaseholder == null ? '未出租' : '已出租',
+                        leaseholder: item.leaseholder?.userName == null ? '' : item.leaseholder.userName,
+                        startLeaseTime: item.startLeaseTime == null ? '' : item.startLeaseTime,
+                        expirationTime: item.expirationTime == null ? '' : item.expirationTime
+                    }
+                })
+
+                this.setState({
+                    data: datas,
+                    loading: false
+                })
+            }
+
+
         })
     }
 
@@ -107,6 +164,19 @@ export class ParkingList extends Component {
         const {data, pagination, loading} = this.state;
         return (
             <div>
+                <Row>
+                    <Col>
+                        <Space direction="vertical">
+                            <Search
+                                addonBefore={this.selectZoneBefore}
+                                placeholder="区内编号"
+                                allowClear
+                                onSearch={this.onSearch}
+                                style={{ width: 304 }}
+                            />
+                        </Space>
+                    </Col>
+                </Row>
                 <Table dataSource={data}
                        columns={this.columns}
                        bordered={true}
