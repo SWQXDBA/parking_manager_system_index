@@ -9,6 +9,7 @@ import Title from "antd/es/typography/Title";
 import {ParkingList} from "../ParkingList";
 import {UserPrivateParkingSpace} from "../UserPrivateParkingSpace";
 import {RentApply} from "../RentApply";
+import {UserLogList} from "../UserLogList";
 const {SubMenu} = Menu
 
 export class UserMenu extends Component {
@@ -43,6 +44,11 @@ export class UserMenu extends Component {
                 routerComponent:<UserPrivateParkingSpace/>
             })
         }
+        else if(target.key==='4'){
+            this.setState({
+                routerComponent:<UserLogList/>
+            })
+        }
     }
     applyRent  = (zone,idInZone)=>{
         this.setState({
@@ -74,6 +80,7 @@ export class UserMenu extends Component {
                             <Menu.Item onClick={this.showChange} key="1" icon={<DesktopOutlined/>}>个人中心</Menu.Item>
                             <Menu.Item onClick={this.showChange} key="2" icon={<DesktopOutlined/>}>车位情况</Menu.Item>
                             <Menu.Item onClick={this.showChange} key="3" icon={<DesktopOutlined/>}>我的车位</Menu.Item>
+                            <Menu.Item onClick={this.showChange} key="4" icon={<DesktopOutlined/>}>我的日志</Menu.Item>
 
                         </Menu>
                     </Col>

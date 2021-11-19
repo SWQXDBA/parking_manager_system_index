@@ -10,6 +10,7 @@ const { Search } = Input;
 export class ParkingList extends Component {
     state = {
         selectZone : 'A',
+        allData:[],
         data: [],
         pagination: {
             defaultCurrent: 1,
@@ -18,14 +19,7 @@ export class ParkingList extends Component {
         },
         loading: false,
     };
-   selectZoneBefore = (
-        <Select placeholder="区域编号" defaultValue="A" className="select-before"
-                onChange={this.onSelectChange}>
-            <Option value="B">B</Option>
-            <Option value="C">C</Option>
-            <Option value="D">D</Option>
-        </Select>
-    );
+
          dataSource = [
             {
                 key: '1',
@@ -103,15 +97,25 @@ export class ParkingList extends Component {
 
     ]
     onSelectChange = (value)=>{
+        // eslint-disable-next-line react/no-direct-mutation-state
         this.state.selectZone = value;
-    }
-    onSearch = (value)=>{
-        this.setState({
-            data:this.old
-        })
-         this.old =  this.state.data.map(o=>o)
 
-       const arr =this.state.data.filter((current,index)=>{
+    }
+
+    selectZoneBefore = (
+        <Select placeholder="区域编号" defaultValue="A" className="select-before"
+                onChange={this.onSelectChange}>
+            <Select.Option value="A">A</Select.Option>
+            <Select.Option value="B">B</Select.Option>
+            <Select.Option value ="C">C</Select.Option>
+            <Select.Option value="D">D</Select.Option>
+        </Select>
+    );
+    onSearch = (value)=>{
+
+
+       const arr =this.state.allData.filter((current)=>{
+
             return current.parkZone == this.state.selectZone&&current.indexInZone == value
         })
         this.setState({
@@ -142,7 +146,8 @@ export class ParkingList extends Component {
 
                 this.setState({
                     data: datas,
-                    loading: false
+                    loading: false,
+                    allData:datas
                 })
             }
 

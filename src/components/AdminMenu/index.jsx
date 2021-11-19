@@ -10,6 +10,7 @@ import {ParkingList} from "../ParkingList";
 import {UserPrivateParkingSpace} from "../UserPrivateParkingSpace";
 import {RentApply} from "../RentApply";
 import {RentApplyList} from "../RentApplyList";
+import {AllLogList} from "../AllLogList";
 const {SubMenu} = Menu
 
 export class AdminMenu extends Component {
@@ -35,11 +36,12 @@ export class AdminMenu extends Component {
             this.setState({
                 routerComponent:<RentApplyList/>
             })
-        }/*else if(target.key==='2'){
+        }else if(target.key==='2'){
             this.setState({
-                routerComponent:<ParkingList applyRent = {this.applyRent}/>
+                routerComponent:<AllLogList/>
             })
-        }else if(target.key==='3'){
+        }
+        /*else if(target.key==='3'){
             this.setState({
                 routerComponent:<UserPrivateParkingSpace/>
             })
@@ -71,6 +73,7 @@ export class AdminMenu extends Component {
                               inlineCollapsed={this.state.collapsed}>
 
                             <Menu.Item onClick={this.showChange} key="1" icon={<DesktopOutlined/>}>申请批准</Menu.Item>
+                            <Menu.Item onClick={this.showChange} key="2" icon={<DesktopOutlined/>}>管理日志</Menu.Item>
                            {/* <Menu.Item onClick={this.showChange} key="2" icon={<DesktopOutlined/>}>车位情况</Menu.Item>
                             <Menu.Item onClick={this.showChange} key="3" icon={<DesktopOutlined/>}>我的车位</Menu.Item>*/}
 
