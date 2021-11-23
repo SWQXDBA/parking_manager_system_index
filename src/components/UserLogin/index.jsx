@@ -31,7 +31,9 @@ const {Title} = Typography;
         })
 
     };
-
+     toRegister = ()=>{
+         this.props.history.push(routerPaths.userRegister)
+     }
     onUserNameChange = (event) => {
         const userName = event.target.value;
         this.setState({userName})
@@ -87,7 +89,7 @@ const {Title} = Typography;
                                             onClick={this.onFill}>
                                         登录
                                     </Button>
-                                    &nbsp; 或者 &nbsp;  <a href="">注册新账户</a>
+                                    &nbsp; 或者 &nbsp;  <a href="#" onClick={this.toRegister}>注册新账户</a>
                                 </Form.Item>
                             </Form>
                         </Col>

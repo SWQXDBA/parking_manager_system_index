@@ -1,5 +1,6 @@
 export const urls = {
     userLoginUrl :'http://localhost:3000/user/login',
+    userRegisterUrl :'http://localhost:3000/user/register',
     userGetOptionLogUrl:"http://localhost:3000/user/getOptionLog",
     getAllParksUrl:'http://localhost:3000/parkingSpace/getAll',
     getPrivateParkingSpaceUrl:'http://localhost:3000/parkingSpace/getByUser',
