@@ -11,7 +11,6 @@ export const urls2 = {
     adminGetAllRentApplyUrl:'http://localhost:3000/admin/getAllRentApply',
     adminRefuseApplyUrl:'http://localhost:3000/admin/refuse',
     adminGetAllOptionLogUrl:'http://localhost:3000/admin/getAllOptionLog'
-
 }
 export const urls = {
     userLoginUrl :'http://localhost:8080/api/user/login',
