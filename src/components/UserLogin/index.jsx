@@ -18,7 +18,10 @@ const {Title} = Typography;
 
 
     onFill = () => {
-
+        if(this.state.userName===''||this.state.passWord===''){
+            alert('用户名和密码不能为空!')
+            return
+        }
 
         axios.post(urls.userLoginUrl, this.state).then(response => {
             const {data} = response
@@ -58,14 +61,14 @@ const {Title} = Typography;
                             >
                                 <Form.Item
                                     name="username"
-                                    rules={[{required: true, message: 'Please input your Username!'}]}
+                                    rules={[{required: true, message: '请输入用户名!'}]}
                                 >
                                     <Input prefix={<UserOutlined className="site-form-item-icon"/>}
                                            placeholder="请输入用户名" onChange={this.onUserNameChange}/>
                                 </Form.Item>
                                 <Form.Item
                                     name="password"
-                                    rules={[{required: true, message: 'Please input your Password!'}]}
+                                    rules={[{required: true, message: '请输入密码!'}]}
                                 >
                                     <Input
                                         prefix={<LockOutlined className="site-form-item-icon"/>}

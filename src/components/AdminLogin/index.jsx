@@ -18,6 +18,10 @@ export class AdminLogin extends React.Component {
 
 
     onFill = () => {
+        if(this.state.userName===''||this.state.password===''){
+            alert('用户名和密码不能为空!')
+            return
+        }
 
 
         axios.post(urls.adminLoginUrl, this.state).then(response => {

@@ -8,9 +8,9 @@ import {UserCenter} from "../UserCenter";
 import Title from "antd/es/typography/Title";
 import {ParkingList} from "../ParkingList";
 import {UserPrivateParkingSpace} from "../UserPrivateParkingSpace";
-import {RentApply} from "../RentApply";
 import {RentApplyList} from "../RentApplyList";
 import {AllLogList} from "../AllLogList";
+import {AddAdmin} from "../AddAdmin";
 const {SubMenu} = Menu
 
 export class AdminMenu extends Component {
@@ -39,6 +39,11 @@ export class AdminMenu extends Component {
         }else if(target.key==='2'){
             this.setState({
                 routerComponent:<AllLogList/>
+            })
+        }
+        else if(target.key==='3'){
+            this.setState({
+                routerComponent:<AddAdmin/>
             })
         }
         /*else if(target.key==='3'){
@@ -74,6 +79,7 @@ export class AdminMenu extends Component {
 
                             <Menu.Item onClick={this.showChange} key="1" icon={<DesktopOutlined/>}>申请批准</Menu.Item>
                             <Menu.Item onClick={this.showChange} key="2" icon={<DesktopOutlined/>}>管理日志</Menu.Item>
+                            <Menu.Item onClick={this.showChange} key="3" icon={<DesktopOutlined/>}>添加管理员</Menu.Item>
                            {/* <Menu.Item onClick={this.showChange} key="2" icon={<DesktopOutlined/>}>车位情况</Menu.Item>
                             <Menu.Item onClick={this.showChange} key="3" icon={<DesktopOutlined/>}>我的车位</Menu.Item>*/}
 
