@@ -13,17 +13,17 @@ export const urls2 = {
     adminGetAllOptionLogUrl:'http://localhost:3000/admin/getAllOptionLog'
 }
 export const urls = {
-    userLoginUrl :'http://localhost:8080/api/user/login',
-    userRegisterUrl :'http://localhost:8080/api/user/register',
-    userGetOptionLogUrl:"http://localhost:8080/api/user/getOptionLog",
-    getAllParksUrl:'http://localhost:8080/api/parkingSpace/getAll',
-    getPrivateParkingSpaceUrl:'http://localhost:8080/api/parkingSpace/getByUser',
-    rentApply:'http://localhost:8080/api/user/rent',
-    adminLoginUrl:'http://localhost:8080/api/admin/login',
-    adminAddAdminUrl:'http://localhost:8080/api/admin/addAdmin',
-    adminAdmitRentApplyUrl:'http://localhost:8080/api/admin/admit',
-    adminGetAllRentApplyUrl:'http://localhost:8080/api/admin/getAllRentApply',
-    adminRefuseApplyUrl:'http://localhost:8080/api/admin/refuse',
-    adminGetAllOptionLogUrl:'http://localhost:8080/api/admin/getAllOptionLog'
+    userLoginUrl :'http://localhost:8998/api/user/login',
+    userRegisterUrl :'http://localhost:8998/api/user/register',
+    userGetOptionLogUrl:"http://localhost:8998/api/user/getOptionLog",
+    getAllParksUrl:'http://localhost:8998/api/parkingSpace/getAll',
+    getPrivateParkingSpaceUrl:'http://localhost:8998/api/parkingSpace/getByUser',
+    rentApply:'http://localhost:8998/api/user/rent',
+    adminLoginUrl:'http://localhost:8998/api/admin/login',
+    adminAddAdminUrl:'http://localhost:8998/api/admin/addAdmin',
+    adminAdmitRentApplyUrl:'http://localhost:8998/api/admin/admit',
+    adminGetAllRentApplyUrl:'http://localhost:8998/api/admin/getAllRentApply',
+    adminRefuseApplyUrl:'http://localhost:8998/api/admin/refuse',
+    adminGetAllOptionLogUrl:'http://localhost:8998/api/admin/getAllOptionLog'
 
 }
