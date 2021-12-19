@@ -51,7 +51,7 @@ export class AdminLogin extends React.Component {
             <>
 
             <Row justify="center" align = "middle" style = {{height:'40rem'}}>
-                <Col className={'dbox'} span={6} style={{border: '1px solid black', padding: '1rem'}}>
+                <Col className={'dbox'} span={7} style={{border: '1px solid black', padding: '1rem'}}>
                                 <Title>停车场系统-管理员登录</Title>
                                 <Form
                                     name="normal_login"
