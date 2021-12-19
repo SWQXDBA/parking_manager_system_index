@@ -4,7 +4,7 @@ import {Button, Row,Col, Input, Select, Space, Table} from "antd";
 import axios from "axios";
 import {urls} from "../../configs/urls";
 import {Option} from "antd/es/mentions";
-
+import moment from "moment";
 const { Search } = Input;
 
 export class ParkingList extends Component {
@@ -86,9 +86,11 @@ export class ParkingList extends Component {
             key: 'action',
             dataIndex: 'action',
             render: (text,record,index) => {
+               let expire = moment(record.expirationTime, 'yyyy-MM-DD HH:mm:ss').valueOf() < moment().valueOf();
    /*             console.log('record')
                 console.log(record)*/
-                return <Button onClick = {()=>this.props.applyRent(record.parkZone,record.indexInZone)} type = "primary" disabled  = {record.parkState==='已出租'}> 申请租用</Button>;
+                return <Button onClick = {()=>this.props.applyRent(record.parkZone,record.indexInZone)} type = "primary" disabled  =
+                    {record.parkState==='已出租'&&!expire}> 申请租用</Button>;
             }
 
 
