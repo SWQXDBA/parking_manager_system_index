@@ -44,8 +44,8 @@ export class AddAdmin extends React.Component {
         return (
             <>
 
-                <Row justify="center" align = "top" style = {{height:'600px'}}>
-                    <Col span={18} style={{border: '1px solid black', padding: '15px'}}>
+                <Row justify="center" align = "top" style = {{height:'10rem'}}>
+                    <Col span={18} style={{ padding: '15px'}}>
                         <Title>停车场系统-添加管理员</Title>
                         <Form
                             name="normal_login"

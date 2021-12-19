@@ -61,12 +61,12 @@ export class AdminMenu extends Component {
         //     console.log(this.props.location.state)
         return (
             <>
-                <Row justify="center" align="middle" style={{height: '60px'}}>
+                <Row justify="center" align="middle" style={{height: '3rem'}}>
                     <Col>
-                        <Title  style={{marginTop: '15px'}}> 停车场系统管理员操作中心</Title>
+                        <Title  style={{marginTop: '1rem'}}> 停车场系统管理员操作中心</Title>
                     </Col>
                 </Row>
-                <Row justify="start" style={{marginTop: '100px', height: '500px'}}>
+                <Row justify="start" style={{marginTop: '6rem', height: '32rem'}}>
                     <Col offset={2} span={4}  style={{backgroundColor:'blue'}}>
                         <Button type="primary" onClick={this.toggleCollapsed} style={{marginBottom: 16}}>
                             {React.createElement(this.state.collapsed ? MenuUnfoldOutlined : MenuFoldOutlined)}

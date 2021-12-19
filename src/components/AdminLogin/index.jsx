@@ -5,7 +5,7 @@ import React from 'react';
 import 'antd/dist/antd.css';
 import axios from "axios";
 import {urls} from "../../configs/urls";
-
+import  './index.css'
 
 
 const {Title} = Typography;
@@ -50,8 +50,8 @@ export class AdminLogin extends React.Component {
         return (
             <>
 
-            <Row justify="center" align = "middle" style = {{height:'600px'}}>
-                <Col span={6} style={{border: '1px solid black', padding: '15px'}}>
+            <Row justify="center" align = "middle" style = {{height:'40rem'}}>
+                <Col className={'dbox'} span={6} style={{border: '1px solid black', padding: '1rem'}}>
                                 <Title>停车场系统-管理员登录</Title>
                                 <Form
                                     name="normal_login"

@@ -49,9 +49,9 @@ const {Title} = Typography;
 
     render() {
         return (
-            <>
-                    <Row justify="center" align = "middle" style = {{height:'600px'}}>
-                        <Col span={6} style={{border: '1px solid black', padding: '15px'}}>
+            <div >
+                    <Row justify="center" align = "middle" style = {{height:'40rem'}}>
+                        <Col className={'dbox'} span={6} style={{border: '1px solid black', padding: '1rem'}}>
                             <Title>停车场系统-用户登录</Title>
                             <Form
                                 name="normal_login"
@@ -102,7 +102,7 @@ const {Title} = Typography;
 
 
 
-            </>
+            </div>
 
 
         );
