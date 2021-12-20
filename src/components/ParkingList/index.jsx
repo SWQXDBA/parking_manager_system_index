@@ -89,8 +89,14 @@ export class ParkingList extends Component {
                let expire = moment(record.expirationTime, 'yyyy-MM-DD HH:mm:ss').valueOf() < moment().valueOf();
    /*             console.log('record')
                 console.log(record)*/
+                let disable = record.parkState==='已出租'
+                if(record.parkState==='空闲'){
+                    disable = false
+                }else if(record.parkState==='已占用'){
+                    disable = true
+                }
                 return <Button onClick = {()=>this.props.applyRent(record.parkZone,record.indexInZone)} type = "primary" disabled  =
-                    {record.parkState==='已出租'&&!expire}> 申请租用</Button>;
+                    {disable}> 申请租用</Button>;
             }
 
 
@@ -135,15 +141,38 @@ export class ParkingList extends Component {
         axios.post(urls.getAllParksUrl).then(response => {
             if(response.data!=null){
                 const datas = response.data.map(item => {
-                    return {
-                        key: item.id + '',
-                        parkZone: item.zone,
-                        indexInZone: item.idInZone,
-                        parkState: item.leaseholder == null ? '未出租' : '已出租',
-                        leaseholder: item.leaseholder?.userName == null ? '' : item.leaseholder.userName,
-                        startLeaseTime: item.startLeaseTime == null ? '' : item.startLeaseTime,
-                        expirationTime: item.expirationTime == null ? '' : item.expirationTime
+                    if(item.parkingState==='FREE'){
+                        return {
+                            key: item.id + '',
+                            parkZone: item.zone,
+                            indexInZone: item.idInZone,
+                            parkState:'空闲' ,
+                            leaseholder: null,
+                            startLeaseTime: null,
+                            expirationTime:  null
+                        }
+                    }else if(item.parkingState==='OCCUPY'){
+                        return {
+                            key: item.id + '',
+                            parkZone: item.zone,
+                            indexInZone: item.idInZone,
+                            parkState: '已占用',
+                            leaseholder: null,
+                            startLeaseTime: null,
+                            expirationTime: null
+                        }
+                    }else{
+                        return {
+                            key: item.id + '',
+                            parkZone: item.zone,
+                            indexInZone: item.idInZone,
+                            parkState: item.leaseholder == null ? '未出租' : '已出租',
+                            leaseholder: item.leaseholder?.userName == null ? '' : item.leaseholder.userName,
+                            startLeaseTime: item.startLeaseTime == null ? '' : item.startLeaseTime,
+                            expirationTime: item.expirationTime == null ? '' : item.expirationTime
+                        }
                     }
+
                 })
 
                 this.setState({

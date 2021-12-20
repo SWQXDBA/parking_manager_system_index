@@ -7,7 +7,8 @@ import Title from "antd/es/typography/Title";
 class DataStatistics extends Component {
     state = {
         rented:10,
-        allCount:20
+        allCount:20,
+        occupy:0
     };
     fetch = () => {
 
@@ -15,14 +16,17 @@ class DataStatistics extends Component {
             if(response.data!=null){
                 let rented = 0;
                 let allCount = response.data.length;
+                let occupy = 0
                 response.data.forEach(item=>{
-                    if(item.leaseholder != null||item.parkingState=='RENTED'||item.parkingState=='OCCUPY'){
+                    if(item.parkingState=='OCCUPY'){
+                        occupy++
+                    }else if(item.leaseholder != null||item.parkingState=='RENTED'){
                         rented++;
                     }
                 })
 
                 this.setState({
-                    rented,allCount
+                    rented,allCount,occupy
                 })
             }
 
@@ -34,7 +38,7 @@ class DataStatistics extends Component {
         this.fetch();
     }
     getOption = ()=>{
-        const {rented,allCount} = this.state
+        const {rented,allCount,occupy} = this.state
         return {
             tooltip: {
                 trigger: 'item'
@@ -71,7 +75,7 @@ class DataStatistics extends Component {
                     data: [
                         {value: rented, name: '已使用'},
                         {value: allCount-rented, name: '空闲'},
-
+                        {value: occupy, name: '已占用'}
                     ]
                 }
             ]
@@ -79,11 +83,11 @@ class DataStatistics extends Component {
     };
 
     render() {
-        const {rented,allCount}= this.state
+        const {rented,allCount,occupy}= this.state
         return (
             <div>
                 <ReactEcharts option = {this.getOption()}/>
-                <Title level = {5}>总车位:{allCount} 未出租: {allCount-rented} 已出租:{rented}</Title>
+                <Title level = {5}>总车位:{allCount} 未出租: {allCount-rented} 已出租:{rented} 已占用:{occupy}</Title>
             </div>
         );
     }

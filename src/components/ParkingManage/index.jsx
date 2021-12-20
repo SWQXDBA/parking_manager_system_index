@@ -129,15 +129,38 @@ class ParkingManage extends Component {
         axios.post(urls.getAllParksUrl).then(response => {
             if(response.data!=null){
                 const datas = response.data.map(item => {
-                    return {
-                        key: item.id + '',
-                        parkZone: item.zone,
-                        indexInZone: item.idInZone,
-                        parkState: item.leaseholder == null ? '未出租' : '已出租',
-                        leaseholder: item.leaseholder?.userName == null ? '' : item.leaseholder.userName,
-                        startLeaseTime: item.startLeaseTime == null ? '' : item.startLeaseTime,
-                        expirationTime: item.expirationTime == null ? '' : item.expirationTime
+                    if(item.parkingState==='FREE'){
+                        return {
+                            key: item.id + '',
+                            parkZone: item.zone,
+                            indexInZone: item.idInZone,
+                            parkState:'空闲' ,
+                            leaseholder: null,
+                            startLeaseTime: null,
+                            expirationTime:  null
+                        }
+                    }else   if(item.parkingState==='OCCUPY'){
+                        return {
+                            key: item.id + '',
+                            parkZone: item.zone,
+                            indexInZone: item.idInZone,
+                            parkState: '已占用',
+                            leaseholder: null,
+                            startLeaseTime: null,
+                            expirationTime: null
+                        }
+                    }else{
+                        return {
+                            key: item.id + '',
+                            parkZone: item.zone,
+                            indexInZone: item.idInZone,
+                            parkState: item.leaseholder == null ? '未出租' : '已出租',
+                            leaseholder: item.leaseholder?.userName == null ? '' : item.leaseholder.userName,
+                            startLeaseTime: item.startLeaseTime == null ? '' : item.startLeaseTime,
+                            expirationTime: item.expirationTime == null ? '' : item.expirationTime
+                        }
                     }
+
                 })
 
                 this.setState({
