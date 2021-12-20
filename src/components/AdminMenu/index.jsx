@@ -11,6 +11,9 @@ import {UserPrivateParkingSpace} from "../UserPrivateParkingSpace";
 import {RentApplyList} from "../RentApplyList";
 import {AllLogList} from "../AllLogList";
 import {AddAdmin} from "../AddAdmin";
+import DataStatistics from "../DataStatistics";
+import ParkingManage from "../ParkingManage";
+import ParkingEdit from "../ParkingEdit";
 const {SubMenu} = Menu
 
 export class AdminMenu extends Component {
@@ -45,6 +48,14 @@ export class AdminMenu extends Component {
             this.setState({
                 routerComponent:<AddAdmin/>
             })
+        }    else if(target.key==='4'){
+            this.setState({
+                routerComponent:<DataStatistics/>
+            })
+        } else if(target.key==='5'){
+            this.setState({
+                routerComponent:<ParkingManage parkingManageModify = {this.parkingManageModify}/>
+            })
         }
         /*else if(target.key==='3'){
             this.setState({
@@ -54,6 +65,13 @@ export class AdminMenu extends Component {
     }
 
 
+    parkingManageModify =  (zone,idInZone)=>{
+      this.setState(
+          {
+              routerComponent:<ParkingEdit/>
+          }
+      )
+    }
 
     render() {
 
@@ -80,6 +98,8 @@ export class AdminMenu extends Component {
                             <Menu.Item onClick={this.showChange} key="1" icon={<DesktopOutlined/>}>申请批准</Menu.Item>
                             <Menu.Item onClick={this.showChange} key="2" icon={<DesktopOutlined/>}>管理日志</Menu.Item>
                             <Menu.Item onClick={this.showChange} key="3" icon={<DesktopOutlined/>}>添加管理员</Menu.Item>
+                            <Menu.Item onClick={this.showChange} key="4" icon={<DesktopOutlined/>}>车位统计</Menu.Item>
+                            <Menu.Item onClick={this.showChange} key="5" icon={<DesktopOutlined/>}>车位管理</Menu.Item>
                            {/* <Menu.Item onClick={this.showChange} key="2" icon={<DesktopOutlined/>}>车位情况</Menu.Item>
                             <Menu.Item onClick={this.showChange} key="3" icon={<DesktopOutlined/>}>我的车位</Menu.Item>*/}
 
