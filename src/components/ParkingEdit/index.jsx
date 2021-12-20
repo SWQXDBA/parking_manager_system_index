@@ -13,25 +13,22 @@ class ParkingEdit extends Component {
         parkingState:null
     }
     submit = ()=>{
-        if(this.state.zone==null){
-            alert('数据不能为空!')
-        }else{
-            const {zone,idInZone} = this.props
+      const {zone,idInZone} = this.props
             const {startRentTime,endRentTime,userName,parkingState} = this.state
 
             const data = {
                 zone:zone,
                 idInZone:idInZone,
-                startLeaseTime:startRentTime.valueOf(),
-                expirationTime:endRentTime.valueOf(),
+                startLeaseTime:startRentTime?.valueOf(),
+                expirationTime:endRentTime?.valueOf(),
                 userName:userName,
                 parkingState:parkingState
             }
 
-            axios.put(urls.rentApply,data).then(response=>{
+            axios.post(urls.adminUpdateParkingSpaceUrl,data).then(response=>{
                 alert(response.data.msg)
             })
-        }
+
     }
     onChange = (str,value)=>{
 

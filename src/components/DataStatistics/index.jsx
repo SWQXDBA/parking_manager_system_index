@@ -11,12 +11,12 @@ class DataStatistics extends Component {
     };
     fetch = () => {
 
-/*        axios.post(urls.getAllParksUrl).then(response => {
+        axios.post(urls.getAllParksUrl).then(response => {
             if(response.data!=null){
                 let rented = 0;
                 let allCount = response.data.length;
                 response.data.forEach(item=>{
-                    if(item.leaseholder != null||item.parkingState!='FREE'){
+                    if(item.leaseholder != null||item.parkingState=='RENTED'||item.parkingState=='OCCUPY'){
                         rented++;
                     }
                 })
@@ -27,7 +27,7 @@ class DataStatistics extends Component {
             }
 
 
-        })*/
+        })
     }
     componentDidMount() {
         //  this.state.data = this.dataSource

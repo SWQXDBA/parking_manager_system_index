@@ -24,7 +24,7 @@ export const urls = {
     adminAdmitRentApplyUrl:'http://43.248.186.196:8093/api/admin/admit',
     adminGetAllRentApplyUrl:'http://43.248.186.196:8093/api/admin/getAllRentApply',
     adminRefuseApplyUrl:'http://43.248.186.196:8093/api/admin/refuse',
-    adminGetAllOptionLogUrl:'http://43.248.186.196:8093/api/admin/getAllOptionLog'
-
+    adminGetAllOptionLogUrl:'http://43.248.186.196:8093/api/admin/getAllOptionLog',
+    adminUpdateParkingSpaceUrl:'http://43.248.186.196:8093/api/parkingSpace/update'
 }
 //43.248.18 6.196

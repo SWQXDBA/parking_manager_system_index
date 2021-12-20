@@ -68,7 +68,7 @@ export class AdminMenu extends Component {
     parkingManageModify =  (zone,idInZone)=>{
       this.setState(
           {
-              routerComponent:<ParkingEdit/>
+              routerComponent:<ParkingEdit zone={zone} idInZone = {idInZone}/>
           }
       )
     }

@@ -84,7 +84,6 @@ class ParkingManage extends Component {
             key: 'action',
             dataIndex: 'action',
             render: (text,record,index) => {
-                console.log (this.props.parkingManageModify)
                 return <Button onClick = {()=>this.props.parkingManageModify(record.parkZone,record.indexInZone)} type = "primary"> 编辑 </Button>;
             }
 
