@@ -44,7 +44,7 @@ export class RentApply extends Component {
                idInZone:idInZone,
                startLeaseTime:startRentTime.valueOf(),
                expirationTime:endRentTime.valueOf(),
-               rentPrice:this.getPrice()
+               rentPrice:this.getPrice().price
            }
 
            axios.post(urls.rentApply,data).then(response=>{

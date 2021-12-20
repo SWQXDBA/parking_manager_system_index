@@ -19,19 +19,20 @@ class ParkingEdit extends Component {
             const data = {
                 zone:zone,
                 idInZone:idInZone,
-                startLeaseTime:startRentTime?.valueOf(),
-                expirationTime:endRentTime?.valueOf(),
+                startRentTime:startRentTime?.valueOf(),
+                endRentTime:endRentTime?.valueOf(),
                 userName:userName,
                 parkingState:parkingState
             }
 
+            console.log(data)
             axios.post(urls.adminUpdateParkingSpaceUrl,data).then(response=>{
+
                 alert(response.data.msg)
             })
 
     }
     onChange = (str,value)=>{
-
         if(str==='起始时间'){
             this.setState({
                 startRentTime:value
@@ -42,8 +43,10 @@ class ParkingEdit extends Component {
             })
         }
         else if(str==='承租用户名'){
+
+            //是event
             this.setState({
-                userName:value
+                userName:value.target.value
             })
         } else if(str==='车位状态'){
             this.setState({
