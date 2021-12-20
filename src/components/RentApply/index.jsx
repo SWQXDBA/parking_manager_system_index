@@ -4,8 +4,11 @@ import moment from "moment";
 import axios from "axios";
 import {urls} from "../../configs/urls";
 import Title from "antd/es/typography/Title";
-
+const millsPerDay = 86400000
+const millsPerMonth = 2592000000
+const millsPerYear = 31536000000
 export class RentApply extends Component {
+
     state = {
         startRentTime:null,
         endRentTime:null
@@ -40,7 +43,8 @@ export class RentApply extends Component {
                zone:zone,
                idInZone:idInZone,
                startLeaseTime:startRentTime.valueOf(),
-               expirationTime:endRentTime.valueOf()
+               expirationTime:endRentTime.valueOf(),
+               rentPrice:this.getPrice()
            }
 
            axios.post(urls.rentApply,data).then(response=>{
@@ -60,9 +64,29 @@ export class RentApply extends Component {
         }
 
     }
+    getPrice = () =>{
+        let rentTimeMills = this.state.endRentTime- this.state.startRentTime// 租用的时间 毫秒
+        const rentYear =Math.floor(rentTimeMills / millsPerYear)
+        rentTimeMills-=rentYear*millsPerYear
+        const rentMonth =Math.floor(rentTimeMills / millsPerMonth)
+        rentTimeMills-=rentMonth*millsPerMonth
+        const rentDay =Math.floor (rentTimeMills / millsPerDay)
+        rentTimeMills-=rentDay*millsPerDay
+        const price = rentYear*1000+rentMonth*100+rentDay*5
+        return {
+            rentYear,
+            rentMonth,
+            rentDay,
+            price
+        }
+    }
+
     render() {
+
        const {zone,idInZone} = this.props
 
+
+        const {price,rentDay,rentYear,rentMonth} = this.getPrice()
         return (
             <>
                 <Row>
@@ -104,6 +128,7 @@ export class RentApply extends Component {
                             </Form.Item>
 
                         </Form>
+                        <Title level = {5}>{rentYear}年,{rentMonth}月,{rentDay}天  价格:{price}元</Title>
                     </Col>
 
                 </Row>

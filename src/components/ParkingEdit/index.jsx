@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {Button, Col, DatePicker, Form, Input, Row, Select} from "antd";
 import Title from "antd/es/typography/Title";
 import {LockOutlined} from "@ant-design/icons";
+import axios from "axios";
+import {urls} from "../../configs/urls";
 
 class ParkingEdit extends Component {
     state = {
@@ -10,7 +12,29 @@ class ParkingEdit extends Component {
         userName:null,
         parkingState:null
     }
+    submit = ()=>{
+        if(this.state.zone==null){
+            alert('数据不能为空!')
+        }else{
+            const {zone,idInZone} = this.props
+            const {startRentTime,endRentTime,userName,parkingState} = this.state
+
+            const data = {
+                zone:zone,
+                idInZone:idInZone,
+                startLeaseTime:startRentTime.valueOf(),
+                expirationTime:endRentTime.valueOf(),
+                userName:userName,
+                parkingState:parkingState
+            }
+
+            axios.put(urls.rentApply,data).then(response=>{
+                alert(response.data.msg)
+            })
+        }
+    }
     onChange = (str,value)=>{
+
         if(str==='起始时间'){
             this.setState({
                 startRentTime:value
@@ -47,9 +71,9 @@ class ParkingEdit extends Component {
                         >
                             <Form.Item label="车位状态">
                                 <Select onChange={value => this.onChange('车位状态',value)}>
-                                    <Select.Option value="rented">已出租</Select.Option>
-                                    <Select.Option value="unRented">空闲</Select.Option>
-                                    <Select.Option value="used">已占用</Select.Option>
+                                    <Select.Option value="RENTED">已出租</Select.Option>
+                                    <Select.Option value="FREE">空闲</Select.Option>
+                                    <Select.Option value="OCCUPY">已占用</Select.Option>
                                 </Select>
                             </Form.Item>
 

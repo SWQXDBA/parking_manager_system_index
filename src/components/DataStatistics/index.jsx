@@ -16,7 +16,7 @@ class DataStatistics extends Component {
                 let rented = 0;
                 let allCount = response.data.length;
                 response.data.forEach(item=>{
-                    if(item.leaseholder != null){
+                    if(item.leaseholder != null||item.parkingState!='FREE'){
                         rented++;
                     }
                 })
@@ -69,8 +69,9 @@ class DataStatistics extends Component {
                         show: false
                     },
                     data: [
-                        {value: rented, name: '已出租'},
-                        {value: allCount-rented, name: '未出租'},
+                        {value: rented, name: '已使用'},
+                        {value: allCount-rented, name: '空闲'},
+
                     ]
                 }
             ]
