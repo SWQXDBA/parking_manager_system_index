@@ -46,10 +46,9 @@ const {Title} = Typography;
         this.setState({passWord})
     }
 
-
     render() {
         return (
-            <div >
+            <div className={'background'}>
                     <Row justify="center" align = "middle" style = {{height:'40rem'}}>
                         <Col className={'dbox'} span={7} style={{border: '1px solid black', padding: '1rem'}}>
                             <Title>停车场系统-用户登录</Title>
@@ -57,7 +56,6 @@ const {Title} = Typography;
                                 name="normal_login"
                                 className="login-form"
                                 initialValues={{remember: true}}
-
                             >
                                 <Form.Item
                                     name="username"
@@ -86,7 +84,6 @@ const {Title} = Typography;
                                     </a>
                                 </Form.Item>
 
-
                                 <Form.Item>
                                     <Button type="primary" htmlType="submit" className="login-form-button"
                                             onClick={this.onFill}>
@@ -97,11 +94,6 @@ const {Title} = Typography;
                             </Form>
                         </Col>
                     </Row>
-
-
-
-
-
             </div>
 
 

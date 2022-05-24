@@ -14,7 +14,7 @@ export class ParkingList extends Component {
         data: [],
         pagination: {
             defaultCurrent: 1,
-            defaultPageSize: 8,
+            defaultPageSize: 5,
             showSizeChanger: false
         },
         loading: false,
@@ -115,7 +115,7 @@ export class ParkingList extends Component {
                 onChange={this.onSelectChange}>
             <Select.Option value="A">A</Select.Option>
             <Select.Option value="B">B</Select.Option>
-            <Select.Option value ="C">C</Select.Option>
+            <Select.Option value="C">C</Select.Option>
             <Select.Option value="D">D</Select.Option>
         </Select>
     );
@@ -181,8 +181,6 @@ export class ParkingList extends Component {
                     allData:datas
                 })
             }
-
-
         })
     }
 

@@ -9,7 +9,8 @@ export const routerPaths = {
     userRegister: '/userRegister',
     userMenu:'/userMenu',
     adminLogin:'/adminLogin',
-    adminMenu:'/adminMenu'
+    adminMenu:'/adminMenu',
+    index:'/'
 }
 
 export  const routers = [
@@ -32,6 +33,10 @@ export  const routers = [
     {
         path:routerPaths.adminMenu,
         component:AdminMenu
+    },
+    {
+        path:routerPaths.index,
+        component:UserMenu
     }
 ]
 

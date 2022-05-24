@@ -56,10 +56,10 @@ export class UserRegister extends React.Component {
 
     render() {
         return (
-            <>
+            <div className={'background'}>
 
-                <Row justify="center" align = "middle" style = {{height:'600px'}}>
-                    <Col span={6} style={{border: '1px solid black', padding: '15px'}}>
+                <Row justify="center" align = "middle" style = {{height:'40rem'}}>
+                    <Col className={'dbox'} span={7} style={{border: '1px solid black', padding: '1rem'}}>
                         <Title>停车场系统-用户注册</Title>
                         <Form
                             name="normal_login"
@@ -110,8 +110,7 @@ export class UserRegister extends React.Component {
                         </Form>
                     </Col>
                 </Row>
-
-            </>
+            </div>
 
 
         );

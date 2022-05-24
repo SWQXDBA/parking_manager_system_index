@@ -1,3 +1,9 @@
 .dbox{
     background-color: white;
 }
+.background{
+    height: 45rem;
+    background-image: url(../../img/PARK.jpg) ;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

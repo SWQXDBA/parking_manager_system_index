@@ -4,8 +4,13 @@
     justify-content:center;
     width: 100%;
     height: 100%;
-
 }
 .dbox{
     background-color: white;
+}
+.background{
+    height: 45rem;
+    background-image: url(../../img/PARK.jpg) ;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
