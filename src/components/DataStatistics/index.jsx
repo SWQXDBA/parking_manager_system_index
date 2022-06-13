@@ -20,7 +20,7 @@ class DataStatistics extends Component {
                 response.data.forEach(item=>{
                     if(item.parkingState=='OCCUPY'){
                         occupy++
-                    }else if(item.leaseholder != null||item.parkingState=='RENTED'){
+                    }else if(item.leaseholder != null&&item.parkingState=='RENTED'){
                         rented++;
                     }
                 })
