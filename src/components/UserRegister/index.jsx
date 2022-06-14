@@ -27,7 +27,14 @@ export class UserRegister extends React.Component {
             alert('两次输入的密码不一致!')
             return
         }
-
+        if(userName==null||userName===''){
+            alert('用户名不能为空!')
+            return
+    }
+        if(password==null||password===''){
+            alert('密码不能为空!')
+            return
+        }
         axios.post(urls.userRegisterUrl, {
             userName: userName,
             password: password
@@ -104,7 +111,7 @@ export class UserRegister extends React.Component {
                             <Form.Item>
                                 <Button type="primary" htmlType="submit" className="login-form-button"
                                         onClick={this.onFill}>
-                                    登录
+                                    注册
                                 </Button>
                             </Form.Item>
                         </Form>

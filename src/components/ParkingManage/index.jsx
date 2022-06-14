@@ -139,7 +139,7 @@ class ParkingManage extends Component {
                             startLeaseTime: null,
                             expirationTime:  null
                         }
-                    }else   if(item.parkingState==='OCCUPY'){
+                    }else if(item.parkingState==='OCCUPY'){
                         return {
                             key: item.id + '',
                             parkZone: item.zone,

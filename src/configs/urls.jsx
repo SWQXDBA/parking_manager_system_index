@@ -13,5 +13,6 @@ export const urls = {
     adminAdmitRentApplyUrl:'http://'+host+':'+port+'/api/admin/admit',
     adminGetAllRentApplyUrl:'http://'+host+':'+port+'/api/admin/getAllRentApply',
     adminRefuseApplyUrl:'http://'+host+':'+port+'/api/admin/refuse',
-    adminGetAllOptionLogUrl:'http://'+host+':'+port+'/api/admin/getAllOptionLog'
+    adminGetAllOptionLogUrl:'http://'+host+':'+port+'/api/admin/getAllOptionLog',
+    adminUpdateParkingSpaceUrl:'http://'+host+':'+port+'/api/parkingSpace/update'
 }
